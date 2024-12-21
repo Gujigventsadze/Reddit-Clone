@@ -10,10 +10,12 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        titleFont: ["Roboto"]
       },
+      boxShadow: {
+        generalShadow: "0 0 4px gray"
+      }
     },
   },
   darkMode: "class",
