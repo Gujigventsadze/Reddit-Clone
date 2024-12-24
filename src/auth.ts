@@ -8,7 +8,7 @@ const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
 
 if(!GITHUB_CLIENT_ID || !GITHUB_CLIENT_SECRET) {
-    throw new Error("GITHUB CLIEN CREDENTIALS MISSING")
+    throw new Error("GITHUB CLIENT CREDENTIALS MISSING")
 }
 
 export const {handlers: {GET, POST}, auth, signIn, signOut} = NextAuth({
