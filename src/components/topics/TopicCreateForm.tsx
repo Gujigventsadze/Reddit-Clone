@@ -4,12 +4,14 @@ import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/popover";
 import { Button } from "@nextui-org/button";
 import { Input, Textarea } from "@nextui-org/input";
 import * as actions from "@/actions";
+import FormButton from "../common/FormButton";
 
 const TopicCreateForm = () => {
-  const [formState, action] = useActionState(actions.createTopic, {
+  const [formState, action, isPending] = useActionState(actions.createTopic, {
     errors: {},
   });
 
+  //For some reason when you first write something wrong and then correctly it does not let you go on. WILL FIX LATER
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -50,13 +52,7 @@ const TopicCreateForm = () => {
                 {formState.errors._form}
               </div>
             ) : null}
-            <Button
-              type="submit"
-              className="text-white font-titleFont"
-              color="success"
-            >
-              Create
-            </Button>
+            <FormButton isLoading={isPending}>Create</FormButton>
           </div>
         </form>
       </PopoverContent>
