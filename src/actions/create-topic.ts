@@ -6,6 +6,7 @@ import type { Topic } from "@prisma/client"
 import { db } from "@/db";
 import { redirect } from "next/navigation"
 import paths from "@/paths";
+import { revalidatePath } from "next/cache";
 
 
 const createTopicSchema = z.object({
@@ -22,7 +23,6 @@ interface formStateType {
 }
 
 export async function createTopic(formState: formStateType, formData: FormData): Promise<formStateType> {
-    //Homepage Revalidation after Creating
     const result = createTopicSchema.safeParse({
         name: formData.get("name"),
         description: formData.get("description"),
@@ -69,5 +69,6 @@ export async function createTopic(formState: formStateType, formData: FormData):
             }
         }
     }
-    redirect(paths.topicShow(topic.slug))
+    revalidatePath(paths.home());
+    redirect(paths.topicShow(topic.slug));
 }

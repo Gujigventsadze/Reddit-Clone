@@ -10,6 +10,12 @@ const paths = {
     },
     postShow(topicSlug: string, postId: string) {
         return `/topics/${topicSlug}/posts/${postId}`;
+    },
+    aboutPage() {
+        return `/about`;
+    },
+    contactPage() {
+        return `/contact`
     }
 }
 
